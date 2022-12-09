@@ -42,7 +42,7 @@ class MoviesView(Resource):
         return "", 201
 
 
-@movie_ns.route("/<int:uid>")
+@movie_ns.route("/<int:uid>/")
 class MovieView(Resource):
     # @auth_required
     def get(self, uid: int):

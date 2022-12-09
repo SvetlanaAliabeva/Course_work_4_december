@@ -12,8 +12,8 @@ class DirectorService:
 
 		return director_one
 
-	def get_all(self):
-		return self.dao.get_all()
+	def get_all(self, filters):
+		return self.dao.get_all(filters)
 
 	def create(self, data):
 		return self.dao.create(data)
