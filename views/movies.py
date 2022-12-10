@@ -13,7 +13,6 @@ movie_ns = Namespace('movies')
 @movie_ns.route("/")
 class MoviesView(Resource):
 
-    # @auth_required
     def get(self):
         director_id = request.args.get("director_id")
         genre_id = request.args.get("genre_id")
@@ -34,7 +33,7 @@ class MoviesView(Resource):
 
         return result, 200
 
-    # @admin_required
+    @admin_required
     def post(self):
         request_json = request.json
         movie_service.create(request_json)
@@ -44,14 +43,14 @@ class MoviesView(Resource):
 
 @movie_ns.route("/<int:uid>/")
 class MovieView(Resource):
-    # @auth_required
+    @auth_required
     def get(self, uid: int):
         movie = movie_service.get_one(uid)
         result = MovieSchema().dump(movie)
 
         return result, 200
 
-    # @admin_required
+    @admin_required
     def put(self, uid: int):
         request_json = request.json
 
@@ -62,7 +61,7 @@ class MovieView(Resource):
 
         return "", 204
 
-    # @admin_required
+    @admin_required
     def delete(self, uid: int):
         movie_service.delete(uid)
 

@@ -5,7 +5,7 @@ from implemented import auth_service, user_service
 
 auth_ns = Namespace("auth")
 
-@auth_ns.route("/register")
+@auth_ns.route("/register/")
 class RegisterView(Resource):
     def post(self):
         request_json = request.json
@@ -21,7 +21,7 @@ class RegisterView(Resource):
         return "User created", 201
 
 
-@auth_ns.route("/login")
+@auth_ns.route("/login/")
 class AuthView(Resource):
     def post(self):
         request_json = request.json
